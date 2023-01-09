@@ -1,0 +1,3491 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "RApi.Api",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/ledger/accounts/{address}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "operationId": "Get",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountStateDataModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountStateDataModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountStateDataModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ledger/accounts/{address}/nonces": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "operationId": "GetNonce",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountNonceInfoViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountNonceInfoViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountNonceInfoViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ledger/accounts/{address}/assets": {
+      "get": {
+        "tags": [
+          "Asset"
+        ],
+        "operationId": "Get",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssetDataModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssetDataModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssetDataModel"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ledger/blockchain/status": {
+      "get": {
+        "tags": [
+          "Blockchain"
+        ],
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDataModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDataModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDataModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/heartbeat": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/exp/blocks": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "operationId": "GetBlocks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpBlockFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpBlockFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpBlockFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpBlockDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpBlockDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpBlockDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/block/{blockNo}": {
+      "get": {
+        "tags": [
+          "Explorer"
+        ],
+        "operationId": "GetBlockByNo",
+        "parameters": [
+          {
+            "name": "blockNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpBlockDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpBlockDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpBlockDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/transactions": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "operationId": "GetExplorerTransactions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionReceiptFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionReceiptFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionReceiptFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/transaction/{transactionHash}": {
+      "get": {
+        "tags": [
+          "Explorer"
+        ],
+        "operationId": "GetTransactionByHash",
+        "parameters": [
+          {
+            "name": "transactionHash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/transaction/{transactionHash}/ops": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns a paginated list of all state operations of this transaction",
+        "operationId": "GetTransactionOperationsByHash",
+        "parameters": [
+          {
+            "name": "transactionHash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "bfd124e0754414b5782099e06e6aa71efae7d08e09b7fd0fa2c820e0fb9f4040"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpStateOperationDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpStateOperationDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpStateOperationDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/transaction/{transactionHash}/affected-acc": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns a paginated list of all the accounts that were affected by this transaction",
+        "operationId": "GetTransactionAffectedAccountsByHash",
+        "parameters": [
+          {
+            "name": "transactionHash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "bfd124e0754414b5782099e06e6aa71efae7d08e09b7fd0fa2c820e0fb9f4040"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/accounts": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "operationId": "GetAccounts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAccountFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAccountFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAccountFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/account/{address}": {
+      "get": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns specified account and it's current state, without assets",
+        "operationId": "GetAccountByAddress",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "0xc251cb8afa46832f056ba1cc510a2c6b5f76bc9a"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/account/{address}/assets": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns a paginated list of all currently owned assets for the specified address",
+        "operationId": "GetAssetsByAddress",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "0xc251cb8afa46832f056ba1cc510a2c6b5f76bc9a"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAssetFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAssetFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAssetFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAssetDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAssetDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAssetDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/account/{address}/history": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns a paginated list of all the accounts states with assets for a certain address",
+        "operationId": "GetAccountHistoryByAddress",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "0xc251cb8afa46832f056ba1cc510a2c6b5f76bc9a"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAccountHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAccountHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpAccountHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountStateDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountStateDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpAccountStateDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/account/{address}/transaction-history": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns a paginated list of all the transaction the specified address was a fromAddr or toAddr",
+        "operationId": "GetTransactionHistoryByAddress",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "0xc251cb8afa46832f056ba1cc510a2c6b5f76bc9a"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpTransactionHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpTransactionReceiptDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/account/{address}/ops-history": {
+      "post": {
+        "tags": [
+          "Explorer"
+        ],
+        "summary": "Returns a paginated list of all the stateOperations the specified address was a contextAddr or targetAddr",
+        "operationId": "GetOperationsHistoryByAddress",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "0xc251cb8afa46832f056ba1cc510a2c6b5f76bc9a"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpOperationHistoryFilterTableFilter"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpStateOperationDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpStateOperationDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpStateOperationDTOTableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exp/nodes": {
+      "get": {
+        "tags": [
+          "Explorer"
+        ],
+        "operationId": "GetExplorerNodes",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpNodeDTOTableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpNodeDTOTableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpNodeDTOTableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mp/transactions": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "GetAll",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PendingTransactionViewModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PendingTransactionViewModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PendingTransactionViewModel"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PendingTransactionViewModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PendingTransactionViewModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PendingTransactionViewModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingTransactionViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingTransactionViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingTransactionViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mp/transactions/{transactionId}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Get",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingTransactionViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingTransactionViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingTransactionViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mp/transactions/{transactionId}/cancel": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Cancel",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mp/transactions/{transactionId}/sign": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Sign",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SignatureViewModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SignatureViewModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SignatureViewModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccountAction": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AccountActionDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionReceiptId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountAction"
+              }
+            ],
+            "nullable": true
+          },
+          "dataPayload": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionReceipt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TransactionReceiptDataModel"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdInTransactionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "address": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "enum": [
+              "None",
+              "AssetHolder",
+              "Node",
+              "ExternalProgram",
+              "EmbeddedProgram"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountType"
+              }
+            ]
+          },
+          "codeHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "createdInTransaction": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TransactionReceiptDataModel"
+              }
+            ],
+            "nullable": true
+          },
+          "program": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountProgramDataModel"
+              }
+            ],
+            "nullable": true
+          },
+          "accountStates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountStateDataModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountNonceInfoViewModel": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "registeredNonce": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pendingNonce": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountProgramDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "accountId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "programData": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "account": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountDataModel"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountStateDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "accountId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdInTransactionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stateHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "assetsHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "dataHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "isCurrent": {
+            "type": "boolean"
+          },
+          "account": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountDataModel"
+              }
+            ],
+            "nullable": true
+          },
+          "createdInTransaction": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TransactionReceiptDataModel"
+              }
+            ],
+            "nullable": true
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetDataModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountType": {
+        "enum": [
+          "None",
+          "AssetHolder",
+          "Node",
+          "ExternalProgram",
+          "EmbeddedProgram"
+        ],
+        "type": "string"
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "accountStateId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ownerAddress": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "type": {
+            "enum": [
+              "None",
+              "Coin",
+              "Nft",
+              "Token"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssetType"
+              }
+            ]
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "balance": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "accountState": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountStateDataModel"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AssetType": {
+        "enum": [
+          "None",
+          "Coin",
+          "Nft",
+          "Token"
+        ],
+        "type": "string"
+      },
+      "BlockDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "parentHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "blockHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "stateRoot": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "isProcessed": {
+            "type": "boolean"
+          },
+          "transactionReceipts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionReceiptDataModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ByteSpan": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isEmpty": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChainConfigDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionReceiptId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "opAdminAddresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "feeAdminAddresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "nftMintNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "treasuryNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "directoryNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "notaryNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "marketplaceNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "isCurrent": {
+            "type": "boolean"
+          },
+          "transactionReceipt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TransactionReceiptDataModel"
+              }
+            ],
+            "nullable": true
+          },
+          "feeDefinitions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeeDefinitionDataModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountDTO": {
+        "type": "object",
+        "properties": {
+          "createdInTransactionHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "enum": [
+              "None",
+              "AssetHolder",
+              "Node",
+              "ExternalProgram",
+              "EmbeddedProgram"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountType"
+              }
+            ]
+          },
+          "codeHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "program": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentAccountState": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpAccountStateDTO"
+              }
+            ],
+            "nullable": true
+          },
+          "numberOfOwnedNFTs": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "numberOfOwnedCoins": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpAccountDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountFilter": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "fromTimestamp": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "toTimestamp": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountType"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpAccountFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountHistoryFilter": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ExpAccountHistoryFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpAccountHistoryFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountStateDTO": {
+        "type": "object",
+        "properties": {
+          "nonce": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "stateHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetsHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "isCurrent": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpAssetDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAccountStateDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpAccountStateDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAssetDTO": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "None",
+              "Coin",
+              "Nft",
+              "Token"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssetType"
+              }
+            ]
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "balance": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAssetDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpAssetDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAssetFilter": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssetType"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpAssetFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpAssetFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpBlockDTO": {
+        "type": "object",
+        "properties": {
+          "blockId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "parentHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "noOfTransactions": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpBlockDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpBlockDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpBlockFilter": {
+        "type": "object",
+        "properties": {
+          "blockId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "parentHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockHash": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpBlockFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpBlockFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpNodeDTO": {
+        "type": "object",
+        "properties": {
+          "nodeAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "nodeUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "isTrusted": {
+            "type": "boolean"
+          },
+          "acceptsTransactions": {
+            "type": "boolean"
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "blockHash": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpNodeDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpNodeDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpOperationHistoryFilter": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ExpOperationHistoryFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpOperationHistoryFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpStateOperationDTO": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "enum": [
+              "CreateAccount",
+              "UpdateAccount",
+              "CloseAccount",
+              "CreateAsset",
+              "UpdateAsset",
+              "BurnAsset",
+              "SendAsset",
+              "ReceiveAsset",
+              "InvokeProgram",
+              "UpdateChainConfig",
+              "Log"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OperationType"
+              }
+            ]
+          },
+          "contextAccount": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetAccount": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSystemLevel": {
+            "type": "boolean"
+          },
+          "dataPayload": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionHash": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpStateOperationDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpStateOperationDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpTransactionHistoryFilter": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ExpTransactionHistoryFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpTransactionHistoryFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpTransactionOperationHistoryFilter": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ExpTransactionOperationHistoryFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpTransactionOperationHistoryFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpTransactionReceiptDTO": {
+        "type": "object",
+        "properties": {
+          "blockId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transactionNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fromAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isRejected": {
+            "type": "boolean"
+          },
+          "transactionHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "nullable": true
+          },
+          "numberOfOperations": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "numberOfTouchedAccounts": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpTransactionReceiptDTOTableResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpTransactionReceiptDTO"
+            },
+            "nullable": true
+          },
+          "numberOfItems": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpTransactionReceiptFilter": {
+        "type": "object",
+        "properties": {
+          "transactionHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "fromAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "isRejected": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "transactionType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpTransactionReceiptFilterTableFilter": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Page"
+              }
+            ],
+            "nullable": true
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExpTransactionReceiptFilter"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeeDefinitionDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "chainConfigId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "feeAccount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "coinKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "flatFee": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "percentFee": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ceil": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "floor": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "type": {
+            "enum": [
+              "CreateAccount",
+              "UpdateAccount",
+              "CloseAccount",
+              "CreateAsset",
+              "UpdateAsset",
+              "BurnAsset",
+              "SendAsset",
+              "ReceiveAsset",
+              "InvokeProgram",
+              "UpdateChainConfig",
+              "Log"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OperationType"
+              }
+            ]
+          },
+          "chainConfig": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ChainConfigDataModel"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OperationData": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "OperationType": {
+        "enum": [
+          "CreateAccount",
+          "UpdateAccount",
+          "CloseAccount",
+          "CreateAsset",
+          "UpdateAsset",
+          "BurnAsset",
+          "SendAsset",
+          "ReceiveAsset",
+          "InvokeProgram",
+          "UpdateChainConfig",
+          "Log"
+        ],
+        "type": "string"
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "default": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "PendingTransactionStatus": {
+        "enum": [
+          "None",
+          "Registered",
+          "Notified",
+          "Canceled",
+          "Submitted",
+          "Committed",
+          "Failed"
+        ],
+        "type": "string"
+      },
+      "PendingTransactionType": {
+        "enum": [
+          "None",
+          "Transfer"
+        ],
+        "type": "string"
+      },
+      "PendingTransactionViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "fromPublicAddress": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "description": "This is the public address of the user that created the transation.",
+            "nullable": true
+          },
+          "type": {
+            "enum": [
+              "None",
+              "Transfer"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PendingTransactionType"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "None",
+              "Registered",
+              "Notified",
+              "Canceled",
+              "Submitted",
+              "Committed",
+              "Failed"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PendingTransactionStatus"
+              }
+            ]
+          },
+          "statusDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSigned": {
+            "type": "boolean"
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "transactionHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "transactionNonce": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionTimestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionToAddress": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "transactionAssetType": {
+            "enum": [
+              "None",
+              "Coin",
+              "Nft",
+              "Token"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssetType"
+              }
+            ]
+          },
+          "transactionAssetAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionAssetKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionData": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": {}
+      },
+      "Signature": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "v": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "chainId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "recoveryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "r": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "rAsSpan": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ByteSpan"
+              }
+            ],
+            "readOnly": true
+          },
+          "s": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          },
+          "sAsSpan": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ByteSpan"
+              }
+            ],
+            "readOnly": true
+          },
+          "bytesWithRecovery": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignatureViewModel": {
+        "type": "object",
+        "properties": {
+          "signature": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Signature"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StateOperationDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionReceiptId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "enum": [
+              "CreateAccount",
+              "UpdateAccount",
+              "CloseAccount",
+              "CreateAsset",
+              "UpdateAsset",
+              "BurnAsset",
+              "SendAsset",
+              "ReceiveAsset",
+              "InvokeProgram",
+              "UpdateChainConfig",
+              "Log"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OperationType"
+              }
+            ]
+          },
+          "contextAccount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "targetAccount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "isSystemLevel": {
+            "type": "boolean"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OperationData"
+              }
+            ],
+            "nullable": true
+          },
+          "dataPayload": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionReceipt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TransactionReceiptDataModel"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransactionReceiptDataModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "blockId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "blockNo": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "transactionNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fromAddress": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isRejected": {
+            "type": "boolean"
+          },
+          "isProgramExecution": {
+            "type": "boolean"
+          },
+          "transactionHash": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uint256"
+              }
+            ],
+            "nullable": true
+          },
+          "block": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BlockDataModel"
+              }
+            ],
+            "nullable": true
+          },
+          "stateOperations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StateOperationDataModel"
+            },
+            "nullable": true
+          },
+          "chainConfigs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChainConfigDataModel"
+            },
+            "nullable": true
+          },
+          "createdAccounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountDataModel"
+            },
+            "nullable": true
+          },
+          "accountStates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountStateDataModel"
+            },
+            "nullable": true
+          },
+          "accountActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountActionDataModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "uint256": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
