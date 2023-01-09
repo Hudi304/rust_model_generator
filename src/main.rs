@@ -1,5 +1,4 @@
 pub mod swagger_generator;
-
 use swagger_generator::*;
 
 fn main() {

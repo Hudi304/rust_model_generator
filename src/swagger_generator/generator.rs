@@ -1,19 +1,22 @@
 use std::fs;
 
-use crate::swagger_generator::enum_generator::{filter_enums, get_file_content};
-use crate::swagger_generator::generator_utils::{delete_dir_contents, write_file};
-use crate::swagger_generator::model_generator::{get_model_file_content, MODELS_PATH};
-use crate::{
-    generator_models::swagger_format::SwaggerFormat,
-    swagger_generator::model_generator::filter_models,
+use crate::swagger_generator::enum_generator::enum_generator::{filter_enums, get_file_content};
+use crate::swagger_generator::model_generator::model_generator::{
+    get_model_file_content, MODELS_PATH,
 };
+use crate::swagger_generator::utils::utils::write_file;
+
 use colored::*;
 use reqwest::blocking::get;
 use serde::Deserialize;
 use serde_json::Value;
 
+use super::generator_models::swagger_format::SwaggerFormat;
+use super::model_generator::model_generator::filter_models;
+use super::utils::utils::delete_dir_contents;
+
 const SWAGGER_URL: &str = "http://localhost:41000/swagger/v1/swagger.json";
-const ENUMS_PATH: &str = "src/swagger_generator/enums/";
+const ENUMS_PATH: &str = "src/swagger_generator/output/enums/";
 
 pub fn write_enum_files(enums_array: &Vec<(&String, &Value)>) {
     println!("{}", "Writing enums...".cyan());
