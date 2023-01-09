@@ -8,7 +8,6 @@ use crate::swagger_generator::utils::utils::write_file;
 
 use colored::*;
 use reqwest::blocking::get;
-use serde::Deserialize;
 use serde_json::Value;
 
 use super::generator_models::swagger_format::SwaggerFormat;
@@ -35,32 +34,6 @@ pub fn write_model_files(models_array: &Vec<(&String, &Value)>) {
             Some((file_path, file_content)) => write_file(&file_path, &file_content),
         }
     }
-}
-
-#[derive(Deserialize)]
-pub struct ReplaceAllSettings {
-    // filters: Filters,
-    // replace: Replace,
-}
-
-pub fn read_toml() -> ReplaceAllSettings {
-    let settings_path = "src/tools/replace_all_config.toml";
-
-    let mut config = match fs::read_to_string(settings_path) {
-        Err(why) => {
-            panic!("{}: {}", "couldn't open \n".red(), why);
-        }
-        Ok(file) => file,
-    };
-
-    let config: ReplaceAllSettings = match toml::from_str(&config) {
-        Ok(d) => d,
-        Err(_) => {
-            panic!("Unable to load data from ");
-        }
-    };
-
-    return config;
 }
 
 pub fn get_data() {

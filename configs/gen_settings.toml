@@ -1,0 +1,15 @@
+[DATA_SOURCES]
+JSON_PATH = "./response.json"
+SWAGGER_URL = "http://localhost:41000/swagger/v1/swagger.json"
+
+
+[OPUTPUT_PATHS]
+ENUMS = "src/swagger_generator/enums/"
+MODELS = "src/swagger_generator/models/"
+APIS = "src/swagger_generator/apis/"
+
+
+[CONFIG_PATHS]
+ENUMS = "configs/enum_file_config.rs"
+MODELS = "configs/enum_file_config.rs"
+APIS = "configs/apis_file_config.rs"
